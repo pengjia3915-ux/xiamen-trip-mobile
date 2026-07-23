@@ -1,0 +1,1323 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f0df">
+  <meta name="robots" content="noindex,nofollow,noarchive,noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="2026年7月25日至28日厦门情侣轻松旅行手机指南">
+  <title>厦门情侣轻松旅行｜手机指南</title>
+  <style>
+    :root {
+      --paper: #f7f0df;
+      --paper-deep: #eee2c8;
+      --ink: #17344f;
+      --ink-soft: #637181;
+      --coral: #e4572e;
+      --coral-deep: #c94521;
+      --sea: #9bc8d9;
+      --sea-deep: #5e9fb9;
+      --sage: #92a978;
+      --sage-deep: #617c55;
+      --sand: #dfcf9d;
+      --line: rgba(23, 52, 79, .13);
+      --shadow: 0 18px 48px rgba(42, 54, 55, .18);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #d8d3c8;
+      color: var(--ink);
+      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+    button,
+    a {
+      font: inherit;
+    }
+    button {
+      color: inherit;
+    }
+    .app {
+      position: relative;
+      width: min(100%, 480px);
+      height: 100svh;
+      min-height: 650px;
+      margin: 0 auto;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(228, 87, 46, .06), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(146, 169, 120, .1), transparent 26%),
+        var(--paper);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .view {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(10px);
+      transition: opacity .22s ease, transform .22s ease;
+    }
+    .view.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+    }
+    .trip-view {
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+      padding-bottom: calc(70px + var(--safe-bottom));
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding: calc(18px + env(safe-area-inset-top, 0px)) 22px 8px;
+      position: relative;
+      z-index: 8;
+    }
+    .eyebrow {
+      margin: 0 0 2px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+    h1 {
+      margin-bottom: 2px;
+      font-family: "STKaiti", "KaiTi", "FangSong", serif;
+      font-size: clamp(42px, 13vw, 58px);
+      line-height: .95;
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+    .date-range {
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: Georgia, serif;
+      font-size: 14px;
+      letter-spacing: .08em;
+    }
+    .weather {
+      display: grid;
+      justify-items: center;
+      gap: 1px;
+      min-width: 52px;
+      padding-top: 4px;
+      color: var(--ink-soft);
+      font-size: 12px;
+    }
+    .weather span:first-child {
+      font-size: 27px;
+      line-height: 1;
+    }
+    .day-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 8px 18px 12px;
+      position: relative;
+      z-index: 8;
+    }
+    .day-tab,
+    .chip,
+    .nav-button,
+    .icon-button,
+    .handle-button,
+    .primary-button,
+    .secondary-button {
+      border: 0;
+      cursor: pointer;
+    }
+    .day-tab {
+      min-height: 44px;
+      border: 1px solid rgba(201, 69, 33, .22);
+      border-radius: 999px;
+      background: rgba(255, 252, 242, .72);
+      color: var(--ink);
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 5px 14px rgba(97, 70, 41, .05);
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+    .day-tab:active {
+      transform: scale(.96);
+    }
+    .day-tab.active {
+      color: #fff8e8;
+      background: var(--coral);
+      border-color: var(--coral);
+      box-shadow: 0 7px 18px rgba(228, 87, 46, .22);
+    }
+    .map-wrap {
+      position: relative;
+      min-height: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 15% 12%, rgba(255,255,255,.52), transparent 24%),
+        radial-gradient(ellipse at 78% 25%, rgba(255,255,255,.3), transparent 28%),
+        linear-gradient(168deg, rgba(255,255,255,.13), transparent 38%, rgba(51,126,154,.08)),
+        var(--sea);
+    }
+    .map-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(247, 240, 223, .22), transparent 18%),
+        repeating-linear-gradient(174deg, transparent 0 19px, rgba(255,255,255,.09) 19px 20px, transparent 20px 31px);
+      mix-blend-mode: screen;
+    }
+    .island {
+      position: absolute;
+      background:
+        radial-gradient(ellipse at 24% 32%, rgba(97,124,85,.45) 0 5%, transparent 9%),
+        radial-gradient(ellipse at 58% 20%, rgba(97,124,85,.38) 0 6%, transparent 11%),
+        radial-gradient(ellipse at 76% 48%, rgba(97,124,85,.4) 0 5%, transparent 10%),
+        radial-gradient(ellipse at 37% 66%, rgba(97,124,85,.32) 0 6%, transparent 12%),
+        linear-gradient(145deg, rgba(255,255,255,.23), transparent 35%),
+        #d9d4aa;
+      border: 3px solid rgba(72, 104, 77, .25);
+      box-shadow: inset 0 0 24px rgba(75, 100, 65, .16), 0 8px 16px rgba(35, 81, 96, .18);
+      z-index: 1;
+    }
+    .island-main {
+      width: 83%;
+      height: 47%;
+      left: 9%;
+      top: -4%;
+      border-radius: 44% 56% 48% 52% / 56% 46% 54% 44%;
+      transform: rotate(3deg);
+    }
+    .island-gulangyu {
+      width: 43%;
+      height: 21%;
+      left: 18%;
+      top: 43%;
+      border-radius: 52% 48% 58% 42% / 48% 60% 40% 52%;
+      transform: rotate(-7deg);
+      background:
+        radial-gradient(ellipse at 28% 35%, rgba(97,124,85,.42) 0 8%, transparent 13%),
+        radial-gradient(ellipse at 64% 45%, rgba(97,124,85,.38) 0 8%, transparent 14%),
+        linear-gradient(145deg, rgba(255,255,255,.2), transparent 42%),
+        #ded3a2;
+    }
+    .road {
+      position: absolute;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255, 251, 230, .8);
+      box-shadow: 0 0 0 1px rgba(119, 109, 78, .08);
+      transform-origin: left center;
+      z-index: 2;
+    }
+    .r1 { width: 43%; left: 20%; top: 20%; transform: rotate(14deg); }
+    .r2 { width: 46%; left: 31%; top: 31%; transform: rotate(-16deg); }
+    .r3 { width: 27%; left: 49%; top: 8%; transform: rotate(67deg); }
+    .r4 { width: 23%; left: 23%; top: 49%; transform: rotate(18deg); }
+    .r5 { width: 22%; left: 29%; top: 56%; transform: rotate(-19deg); }
+    .landmark {
+      position: absolute;
+      z-index: 3;
+      display: grid;
+      justify-items: center;
+      gap: 1px;
+      color: rgba(23, 52, 79, .72);
+      font-size: 10px;
+      line-height: 1.1;
+      text-align: center;
+      pointer-events: none;
+      filter: saturate(.78);
+    }
+    .landmark b {
+      font-size: 22px;
+      font-weight: 400;
+      text-shadow: 0 2px 2px rgba(255,255,255,.7);
+    }
+    .lm-station { left: 71%; top: 16%; }
+    .lm-garden { left: 72%; top: 5%; }
+    .lm-xmu { left: 23%; top: 29%; }
+    .lm-hotel { left: 50%; top: 25%; }
+    .lm-dock { left: 39%; top: 38%; }
+    .lm-oldtown { left: 43%; top: 34%; }
+    .lm-gulangyu { left: 31%; top: 48%; }
+    .ferry {
+      position: absolute;
+      left: 39%;
+      top: 42%;
+      z-index: 4;
+      font-size: 25px;
+      transform: rotate(-8deg);
+      filter: drop-shadow(0 3px 3px rgba(31,75,90,.24));
+    }
+    .wave {
+      position: absolute;
+      z-index: 2;
+      color: rgba(255,255,255,.58);
+      font-family: Georgia, serif;
+      letter-spacing: 8px;
+      transform: rotate(-5deg);
+      pointer-events: none;
+    }
+    .w1 { left: 5%; top: 39%; }
+    .w2 { right: 4%; top: 48%; transform: rotate(8deg); }
+    .w3 { right: 17%; top: 61%; }
+    .route-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+    }
+    .route-segment {
+      position: absolute;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--coral);
+      transform-origin: left center;
+      box-shadow: 0 1px 3px rgba(151, 50, 25, .2);
+    }
+    .route-segment.water {
+      height: 3px;
+      background: repeating-linear-gradient(90deg, var(--sea-deep) 0 8px, transparent 8px 13px);
+      box-shadow: none;
+    }
+    .pin {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      margin: -17px 0 0 -17px;
+      border: 3px solid #fff8e8;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      display: grid;
+      place-items: center;
+      background: var(--coral);
+      color: #fff;
+      box-shadow: 0 6px 14px rgba(90, 52, 34, .26);
+      cursor: pointer;
+      z-index: 8;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .pin span {
+      transform: rotate(45deg);
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .pin.active {
+      transform: rotate(-45deg) scale(1.2);
+      background: var(--ink);
+    }
+    .pin.pending {
+      background: var(--paper);
+      color: var(--coral);
+      border: 3px dashed var(--coral);
+    }
+    .rain-toggle {
+      position: absolute;
+      right: 15px;
+      top: 12px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 38px;
+      padding: 0 13px;
+      border: 1px solid rgba(23,52,79,.14);
+      border-radius: 999px;
+      background: rgba(255, 250, 235, .9);
+      box-shadow: 0 6px 16px rgba(35,63,70,.12);
+      color: var(--ink);
+      font-size: 13px;
+      backdrop-filter: blur(8px);
+    }
+    .rain-toggle.active {
+      background: var(--ink);
+      color: #fff8e8;
+    }
+    .sheet {
+      position: absolute;
+      z-index: 20;
+      left: 0;
+      right: 0;
+      bottom: calc(68px + var(--safe-bottom));
+      height: 252px;
+      padding: 8px 20px 20px;
+      overflow: hidden;
+      border-radius: 30px 30px 0 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(228,87,46,.05), transparent 25%),
+        var(--paper);
+      box-shadow: 0 -14px 32px rgba(27, 56, 68, .16);
+      transition: height .28s cubic-bezier(.2,.8,.2,1);
+      touch-action: none;
+    }
+    .sheet.expanded {
+      height: min(72svh, 650px);
+      overflow-y: auto;
+      touch-action: pan-y;
+    }
+    .handle-button {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 25px;
+      background: transparent;
+    }
+    .handle {
+      width: 54px;
+      height: 5px;
+      border-radius: 99px;
+      background: rgba(23,52,79,.25);
+    }
+    .sheet-kicker {
+      margin: 2px 0 5px;
+      color: var(--coral);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .sheet h2 {
+      margin-bottom: 4px;
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 28px;
+      line-height: 1.05;
+    }
+    .next-stop {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 12px;
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+    .ticket-row {
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      min-height: 56px;
+      padding: 9px 12px;
+      border: 1px solid rgba(228, 87, 46, .26);
+      border-radius: 16px;
+      background: rgba(255, 249, 231, .72);
+    }
+    .ticket-row .emoji {
+      font-size: 23px;
+    }
+    .ticket-row strong {
+      display: block;
+      color: var(--coral-deep);
+      font-size: 15px;
+    }
+    .ticket-row small {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink-soft);
+    }
+    .action-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 9px;
+      margin-top: 11px;
+    }
+    .primary-button,
+    .secondary-button {
+      min-height: 48px;
+      border-radius: 15px;
+      font-weight: 800;
+    }
+    .primary-button {
+      color: #fff8e8;
+      background: var(--coral);
+      box-shadow: 0 8px 18px rgba(228,87,46,.22);
+    }
+    .secondary-button {
+      min-width: 96px;
+      padding: 0 14px;
+      border: 1px solid rgba(23,52,79,.22);
+      background: rgba(255,255,255,.32);
+    }
+    .timeline {
+      display: grid;
+      gap: 0;
+      margin-top: 18px;
+      padding-bottom: 24px;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 50px 20px minmax(0, 1fr);
+      gap: 8px;
+      min-height: 64px;
+    }
+    .timeline-time {
+      padding-top: 2px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+    .timeline-mark {
+      position: relative;
+    }
+    .timeline-mark::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 4px;
+      bottom: -4px;
+      width: 2px;
+      background: rgba(228,87,46,.28);
+    }
+    .timeline-mark::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 10px;
+      height: 10px;
+      border: 2px solid var(--coral);
+      border-radius: 50%;
+      background: var(--paper);
+    }
+    .timeline-item:last-child .timeline-mark::before {
+      display: none;
+    }
+    .timeline-copy strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 14px;
+    }
+    .timeline-copy span {
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .bottom-nav {
+      position: absolute;
+      z-index: 40;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: calc(68px + var(--safe-bottom));
+      padding-bottom: var(--safe-bottom);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(249,244,229,.96);
+      border-top: 1px solid rgba(23,52,79,.1);
+      backdrop-filter: blur(14px);
+    }
+    .nav-button {
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 2px;
+      background: transparent;
+      color: var(--ink-soft);
+      font-size: 12px;
+    }
+    .nav-button span:first-child {
+      font-size: 23px;
+      line-height: 1;
+    }
+    .nav-button.active {
+      color: var(--coral);
+      font-weight: 800;
+    }
+    .discover-view {
+      overflow-y: auto;
+      padding: calc(20px + env(safe-area-inset-top, 0px)) 18px calc(88px + var(--safe-bottom));
+      background:
+        radial-gradient(circle at 80% 0, rgba(155,200,217,.22), transparent 25%),
+        var(--paper);
+    }
+    .discover-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .discover-head h2 {
+      margin-bottom: 1px;
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 36px;
+    }
+    .discover-head p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+    .discover-tabs,
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .discover-tabs::-webkit-scrollbar,
+    .filter-row::-webkit-scrollbar {
+      display: none;
+    }
+    .discover-tabs {
+      margin-bottom: 12px;
+    }
+    .chip {
+      flex: 0 0 auto;
+      min-height: 38px;
+      padding: 0 16px;
+      border: 1px solid rgba(23,52,79,.15);
+      border-radius: 999px;
+      background: rgba(255,255,255,.32);
+      color: var(--ink);
+      font-size: 13px;
+    }
+    .chip.active {
+      color: #fff8e8;
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+    .optional-note {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      padding: 12px 13px;
+      margin-bottom: 14px;
+      border-left: 4px solid var(--coral);
+      border-radius: 0 13px 13px 0;
+      background: rgba(228,87,46,.07);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .card-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 13px;
+    }
+    .experience-card,
+    .food-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 66px minmax(0, 1fr);
+      gap: 12px;
+      padding: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(23,52,79,.1);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 100% 0, rgba(155,200,217,.18), transparent 28%),
+        rgba(255,252,242,.78);
+      box-shadow: 0 8px 20px rgba(69,76,64,.08);
+    }
+    .card-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(228,87,46,.1);
+      font-size: 30px;
+    }
+    .experience-card h3,
+    .food-card h3 {
+      margin: 0 0 3px;
+      font-size: 16px;
+    }
+    .card-meta {
+      margin: 0 0 6px;
+      color: var(--coral-deep);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .card-copy {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .card-tag {
+      display: inline-block;
+      margin-top: 7px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(146,169,120,.16);
+      color: var(--sage-deep);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .mini-action {
+      grid-column: 2;
+      justify-self: start;
+      margin-top: 3px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--coral-deep);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .poster-card {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) 94px;
+      gap: 12px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 15px;
+      border-radius: 22px;
+      background: var(--ink);
+      color: #fff8e8;
+      box-shadow: 0 12px 26px rgba(23,52,79,.2);
+      cursor: pointer;
+    }
+    .poster-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+    .poster-card span {
+      color: rgba(255,248,232,.72);
+      font-size: 12px;
+    }
+    .poster-card img {
+      width: 94px;
+      height: 118px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,.18);
+    }
+    dialog {
+      width: min(92vw, 440px);
+      max-height: 92svh;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    dialog::backdrop {
+      background: rgba(10,25,35,.66);
+      backdrop-filter: blur(5px);
+    }
+    .dialog-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      color: var(--ink);
+    }
+    .dialog-close {
+      min-height: 36px;
+      padding: 0 13px;
+      border: 1px solid rgba(23,52,79,.14);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    dialog img {
+      display: block;
+      width: 100%;
+      max-height: calc(92svh - 60px);
+      object-fit: contain;
+      background: var(--paper);
+    }
+    .toast {
+      position: absolute;
+      left: 50%;
+      bottom: calc(82px + var(--safe-bottom));
+      z-index: 80;
+      transform: translate(-50%, 12px);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff8e8;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      white-space: nowrap;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    @media (min-width: 481px) {
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        padding: 18px;
+      }
+      .app {
+        height: min(920px, calc(100vh - 36px));
+        border-radius: 28px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app" id="app">
+    <section class="view trip-view active" id="tripView" aria-label="主行程">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">情侣轻松度假 · 4天3晚</p>
+          <h1>厦门</h1>
+          <p class="date-range">07.25—07.28</p>
+        </div>
+        <div class="weather" aria-label="天气提醒">
+          <span>🌦️</span>
+          <span>阵雨</span>
+        </div>
+      </header>
+
+      <nav class="day-tabs" aria-label="选择日期">
+        <button class="day-tab active" type="button" data-day="0">25 周六</button>
+        <button class="day-tab" type="button" data-day="1">26 周日</button>
+        <button class="day-tab" type="button" data-day="2">27 周一</button>
+        <button class="day-tab" type="button" data-day="3">28 周二</button>
+      </nav>
+
+      <section class="map-wrap" id="mapWrap" aria-label="当天手绘线路地图">
+        <div class="island island-main"></div>
+        <div class="island island-gulangyu"></div>
+        <div class="road r1"></div>
+        <div class="road r2"></div>
+        <div class="road r3"></div>
+        <div class="road r4"></div>
+        <div class="road r5"></div>
+        <span class="wave w1">﹏ ﹏ ﹏</span>
+        <span class="wave w2">﹏ ﹏</span>
+        <span class="wave w3">﹏ ﹏</span>
+        <span class="ferry" aria-hidden="true">⛴️</span>
+
+        <div class="landmark lm-station"><b>🚄</b><span>厦门站</span></div>
+        <div class="landmark lm-garden"><b>🌿</b><span>植物园</span></div>
+        <div class="landmark lm-xmu"><b>🏛️</b><span>厦大</span></div>
+        <div class="landmark lm-hotel"><b>🏨</b><span>谷耐酒店</span></div>
+        <div class="landmark lm-dock"><b>⚓</b><span>东渡码头</span></div>
+        <div class="landmark lm-oldtown"><b>🏘️</b><span>中山路</span></div>
+        <div class="landmark lm-gulangyu"><b>🎹</b><span>鼓浪屿</span></div>
+
+        <div class="route-layer" id="routeLayer"></div>
+        <button class="rain-toggle" id="rainToggle" type="button" aria-pressed="false">
+          <span>🌧️</span><span>雨天方案</span>
+        </button>
+      </section>
+
+      <article class="sheet" id="sheet">
+        <button class="handle-button" id="sheetHandle" type="button" aria-label="展开或收起当天详情">
+          <span class="handle"></span>
+        </button>
+        <p class="sheet-kicker" id="sheetKicker">D1 · 抵达日</p>
+        <h2 id="sheetTitle">厦门站 → 酒店 → 厦大</h2>
+        <p class="next-stop"><span>📍</span><span id="nextStop">下一站 · 厦门站南出站口</span></p>
+        <div class="ticket-row">
+          <span class="emoji" id="ticketEmoji">🚄</span>
+          <div>
+            <strong id="ticketMain">D2388 · 13:31抵达</strong>
+            <small id="ticketSub">南出站口乘正规出租车</small>
+          </div>
+          <span aria-hidden="true">›</span>
+        </div>
+        <div class="action-row">
+          <button class="primary-button" id="navAction" type="button">开始导航</button>
+          <button class="secondary-button" id="copyAction" type="button">复制地址</button>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </article>
+    </section>
+
+    <section class="view discover-view" id="discoverView" aria-label="美食与娱乐发现">
+      <header class="discover-head">
+        <div>
+          <p class="eyebrow">不挤进主线 · 按体力决定</p>
+          <h2>发现</h2>
+          <p>本地味与娱乐备选</p>
+        </div>
+        <span aria-hidden="true" style="font-size:36px">🌺</span>
+      </header>
+
+      <nav class="discover-tabs" aria-label="发现分类">
+        <button class="chip" type="button" data-discover="food">美食</button>
+        <button class="chip active" type="button" data-discover="fun">娱乐</button>
+      </nav>
+
+      <section id="funSection">
+        <div class="optional-note">
+          <span>✨</span>
+          <span><strong>娱乐项目独立于主行程。</strong><br>不自动占用时间，只有天气、体力和余票都合适时再选。</span>
+        </div>
+        <div class="filter-row" aria-label="娱乐筛选">
+          <button class="chip active" type="button" data-fun-filter="all">全部</button>
+          <button class="chip" type="button" data-fun-filter="show">演出</button>
+          <button class="chip" type="button" data-fun-filter="culture">闽南体验</button>
+          <button class="chip" type="button" data-fun-filter="rain">雨天</button>
+          <button class="chip" type="button" data-fun-filter="water">水上</button>
+        </div>
+        <div class="card-list" id="funList"></div>
+        <button class="poster-card" id="openPoster" type="button">
+          <span>
+            <strong>查看娱乐项目完整图</strong>
+            <span>适合保存到手机相册</span>
+          </span>
+          <img src="assets/xiamen-entertainment.webp" alt="厦门情侣娱乐备选图缩略图">
+        </button>
+      </section>
+
+      <section id="foodSection" hidden>
+        <div class="filter-row" aria-label="美食筛选">
+          <button class="chip active" type="button" data-food-filter="all">全部</button>
+          <button class="chip" type="button" data-food-filter="夯">夯</button>
+          <button class="chip" type="button" data-food-filter="顶级">顶级</button>
+          <button class="chip" type="button" data-food-filter="人上人">人上人</button>
+        </div>
+        <div class="card-list" id="foodList"></div>
+      </section>
+    </section>
+
+    <nav class="bottom-nav" aria-label="主要页面">
+      <button class="nav-button active" type="button" data-view="trip">
+        <span>🗺️</span><span>行程</span>
+      </button>
+      <button class="nav-button" type="button" data-view="discover">
+        <span>🍵</span><span>发现</span>
+      </button>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <dialog id="posterDialog">
+      <div class="dialog-bar">
+        <strong>厦门情侣娱乐备选</strong>
+        <button class="dialog-close" id="closePoster" type="button">关闭</button>
+      </div>
+      <img src="assets/xiamen-entertainment.webp" alt="厦门情侣娱乐备选完整图">
+    </dialog>
+  </main>
+
+  <script>
+    const itinerary = [
+      {
+        code: "D1",
+        kicker: "D1 · 7月25日 · 抵达日",
+        title: "厦门站 → 酒店 → 厦大",
+        next: "下一站 · 厦门站南出站口",
+        ticketEmoji: "🚄",
+        ticketMain: "D2388 · 13:31抵达",
+        ticketSub: "南出站口乘正规出租车",
+        navQuery: "厦门站南广场",
+        copy: "谷耐酒店（厦门中山路步行街店），厦门市思明区禾祥西路52号",
+        points: [
+          { x: 76, y: 21, label: "厦门站", time: "13:31", note: "南出站口" },
+          { x: 57, y: 31, label: "谷耐酒店", time: "14:10", note: "放行李、休息" },
+          { x: 29, y: 39, label: "厦门大学", time: "16:00后", note: "等待摇号", pending: true },
+          { x: 45, y: 42, label: "百家村 / 中山路", time: "18:30", note: "晚餐与轻松散步" }
+        ],
+        rain: {
+          title: "酒店休息 → 骑楼老城",
+          next: "雨大先入住 · 不赶厦大",
+          ticketEmoji: "☔",
+          ticketMain: "未中签 / 暴雨备选",
+          ticketSub: "中山路骑楼—大元路—八市",
+          navQuery: "厦门中山路步行街",
+          copy: "厦门中山路步行街",
+          points: [
+            { x: 76, y: 21, label: "厦门站", time: "13:31", note: "南出站口打车" },
+            { x: 57, y: 31, label: "谷耐酒店", time: "14:10", note: "充分休息" },
+            { x: 45, y: 42, label: "中山路骑楼", time: "16:30", note: "雨小再出门" },
+            { x: 39, y: 45, label: "八市 / 大元路", time: "晚餐", note: "就近吃老店" }
+          ]
+        }
+      },
+      {
+        code: "D2",
+        kicker: "D2 · 7月26日 · 鼓浪屿",
+        title: "鼓浪屿慢游",
+        next: "下一站 · 东渡客运码头",
+        ticketEmoji: "⛴️",
+        ticketMain: "09:10开船 · 2号登船口",
+        ticketSub: "07:45酒店出发 · 打车约18分钟",
+        navQuery: "厦门邮轮中心厦鼓码头",
+        copy: "厦门邮轮中心厦鼓码头（东渡客运码头）",
+        points: [
+          { x: 57, y: 31, label: "谷耐酒店", time: "07:45", note: "打车出发" },
+          { x: 43, y: 41, label: "东渡客运码头", time: "08:20", note: "提前安检" },
+          { x: 39, y: 49, label: "内厝澳码头", time: "09:10", note: "乘船抵达", waterFromPrevious: true },
+          { x: 57, y: 52, label: "美华沙滩", time: "上午", note: "轻松看海" },
+          { x: 37, y: 56, label: "菽庄花园", time: "午后", note: "视雨势游览" },
+          { x: 53, y: 59, label: "龙头路", time: "返程前", note: "简餐补给" }
+        ],
+        rain: {
+          title: "鼓浪屿室内短线",
+          next: "先确认轮渡是否正常",
+          ticketEmoji: "🌧️",
+          ticketMain: "25日晚复核停复航",
+          ticketSub: "停航则切换华侨博物院与老城",
+          navQuery: "厦门华侨博物院",
+          copy: "厦门华侨博物院",
+          points: [
+            { x: 57, y: 31, label: "谷耐酒店", time: "07:30", note: "确认航班" },
+            { x: 43, y: 41, label: "东渡客运码头", time: "正常开航", note: "提前安检" },
+            { x: 39, y: 49, label: "内厝澳码头", time: "09:10", note: "缩短岛上时间", waterFromPrevious: true },
+            { x: 37, y: 56, label: "菽庄花园", time: "雨天", note: "优先室内空间" }
+          ]
+        }
+      },
+      {
+        code: "D3",
+        kicker: "D3 · 7月27日 · 植物园",
+        title: "植物园 → 午休 → 老城",
+        next: "下一站 · 植物园西门",
+        ticketEmoji: "🌿",
+        ticketMain: "07:00左右入园",
+        ticketSub: "雨林世界—观光车—多肉区",
+        navQuery: "厦门园林植物园西门",
+        copy: "厦门园林植物园西门",
+        points: [
+          { x: 57, y: 31, label: "谷耐酒店", time: "清晨", note: "打车出发" },
+          { x: 72, y: 12, label: "植物园西门", time: "07:00", note: "早入园" },
+          { x: 77, y: 19, label: "雨林世界", time: "上午", note: "喷雾拍照" },
+          { x: 82, y: 26, label: "多肉植物区", time: "上午", note: "观光车前往" },
+          { x: 57, y: 31, label: "酒店午休", time: "13:00", note: "休息2小时" },
+          { x: 42, y: 42, label: "百家村 / 幸福路", time: "16:00后", note: "轻松Citywalk" }
+        ],
+        rain: {
+          title: "室内体验 → 喝茶听戏",
+          next: "雷雨持续则取消植物园",
+          ticketEmoji: "🍵",
+          ticketMain: "雨天不硬走植物园",
+          ticketSub: "老城区小吃＋闽南戏曲茶馆",
+          navQuery: "厦门中山路步行街161号",
+          copy: "厦门市思明区中山路步行街161号新华书店2层",
+          points: [
+            { x: 57, y: 31, label: "谷耐酒店", time: "上午", note: "睡到自然醒" },
+            { x: 42, y: 42, label: "老城区小吃", time: "午后", note: "扁食或虾面" },
+            { x: 46, y: 45, label: "戏曲茶馆", time: "傍晚", note: "娱乐备选，不占主线" }
+          ]
+        }
+      },
+      {
+        code: "D4",
+        kicker: "D4 · 7月28日 · 返程",
+        title: "谷耐酒店 → 厦门站",
+        next: "下一站 · 厦门站",
+        ticketEmoji: "🚄",
+        ticketMain: "早班返程 · 车次待购",
+        ticketSub: "优先厦门站始发班次",
+        navQuery: "厦门站",
+        copy: "厦门站",
+        points: [
+          { x: 57, y: 31, label: "谷耐酒店", time: "05:25 / 05:45", note: "按车次退房" },
+          { x: 76, y: 21, label: "厦门站", time: "提前进站", note: "以12306为准" }
+        ],
+        rain: {
+          title: "提前预约车 → 厦门站",
+          next: "雨天多留10分钟",
+          ticketEmoji: "☔",
+          ticketMain: "前一晚完成打包",
+          ticketSub: "05:15或05:35从酒店出发",
+          navQuery: "厦门站",
+          copy: "厦门站",
+          points: [
+            { x: 57, y: 31, label: "谷耐酒店", time: "提前10分钟", note: "预约出租车" },
+            { x: 76, y: 21, label: "厦门站", time: "早班", note: "直接进站" }
+          ]
+        }
+      }
+    ];
+
+    const entertainment = [
+      { icon: "🎤", title: "小帕《喜剧大咖秀》", meta: "7/25 19:30 · SM三期", copy: "厦大未中签或当天精力充足时再选。", tags: ["show"], copyName: "小帕《喜剧大咖秀》 厦门" },
+      { icon: "🎵", title: "Arboi氩男孩巡演", meta: "7/25 20:00 · 星巢沃克秀", copy: "适合喜欢Livehouse的情侣，不建议和厦大同时硬赶。", tags: ["show"], copyName: "Arboi氩男孩个人巡演 厦门站" },
+      { icon: "😂", title: "漫才《挠痒痒》beta", meta: "7/26 19:30 · SM三期", copy: "鼓浪屿回来后体力允许再去，本次优先推荐。", tags: ["show"], copyName: "南蝶斯卡《挠痒痒》beta 厦门" },
+      { icon: "🎭", title: "单口喜剧《吉她》", meta: "7/26 19:30 · 帽子新空间", copy: "与漫才二选一，余票以大麦或猫眼为准。", tags: ["show"], copyName: "徐不气《吉她》厦门" },
+      { icon: "🍵", title: "闽南戏曲茶馆", meta: "7/27傍晚 · 中山路", copy: "南音、布袋戏、皮影戏与喝茶，离酒店区域较近。", tags: ["culture", "rain"], copyName: "闽南小院戏曲茶馆 厦门" },
+      { icon: "🏺", title: "沙坡尾手作", meta: "雨天下午 · 约60–120分钟", copy: "陶艺、银饰或漆扇三选一，现场搜索当天营业店铺。", tags: ["rain"], copyName: "厦门沙坡尾手作 陶艺 银饰 漆扇" },
+      { icon: "🔐", title: "双人密室", meta: "暴雨备选 · 纯室内", copy: "预订前确认支持2人开场，避免拼场主题。", tags: ["rain"], copyName: "厦门双人密室逃脱" },
+      { icon: "⛵", title: "五缘湾水上体验", meta: "晴天限定 · 当天再订", copy: "帆船、摩托艇等；大风、雷雨或浪高直接取消。", tags: ["water"], copyName: "厦门五缘湾帆船体验" }
+    ];
+
+    const foods = [
+      { icon: "🍜", title: "月华沙茶面", tier: "夯", meta: "D1 / D3 · 老城区顺路", copy: "沙茶面，适合抵达日或老城日。" },
+      { icon: "🥣", title: "浮屿大同鸭肉粥", tier: "夯", meta: "D2 · 鼓浪屿返程后", copy: "鸭肉粥配油条，晚上吃舒服。" },
+      { icon: "🥟", title: "赖厝埕扁食", tier: "夯", meta: "D1 / D3 · 大元路", copy: "扁食＋拌面，适合早午餐。" },
+      { icon: "🦐", title: "明月虾面", tier: "夯", meta: "D3 · 老城区", copy: "传统虾面，午餐优先。" },
+      { icon: "🦆", title: "好德来姜母鸭", tier: "夯", meta: "D1 · 百家村", copy: "建议早点到，卖完就换店。" },
+      { icon: "🥟", title: "劳松扁食", tier: "顶级", meta: "D3 · 雨天也适合", copy: "扁食＋拌面，本地老味。" },
+      { icon: "🦐", title: "阿西虾面", tier: "顶级", meta: "D3 · 机动", copy: "传统虾面，和明月二选一。" },
+      { icon: "🍶", title: "大同烧酒廊", tier: "顶级", meta: "D2晚餐", copy: "闽南烧酒配，适合两人晚餐。" },
+      { icon: "🍙", title: "1980烧肉粽", tier: "顶级", meta: "经过时", copy: "烧肉粽＋沙茶面，不必专程绕路。" },
+      { icon: "🥢", title: "百家村小笼包", tier: "人上人", meta: "D1 / D3", copy: "百家村顺路再吃。" }
+    ];
+
+    const app = document.getElementById("app");
+    const routeLayer = document.getElementById("routeLayer");
+    const mapWrap = document.getElementById("mapWrap");
+    const sheet = document.getElementById("sheet");
+    const sheetHandle = document.getElementById("sheetHandle");
+    const rainToggle = document.getElementById("rainToggle");
+    const toast = document.getElementById("toast");
+    let activeDay = 0;
+    let rainMode = false;
+    let activePoint = 0;
+    let toastTimer;
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function dayData() {
+      const day = itinerary[activeDay];
+      return rainMode ? { ...day, ...day.rain, code: day.code, kicker: day.kicker.replace(/·.*$/, "· 雨天方案") } : day;
+    }
+
+    function renderRoute() {
+      const day = dayData();
+      const points = day.points;
+      routeLayer.innerHTML = "";
+      for (let i = 1; i < points.length; i++) {
+        const from = points[i - 1];
+        const to = points[i];
+        const dx = to.x - from.x;
+        const dy = to.y - from.y;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        const segment = document.createElement("div");
+        segment.className = "route-segment" + (to.waterFromPrevious ? " water" : "");
+        segment.style.left = from.x + "%";
+        segment.style.top = from.y + "%";
+        segment.style.width = length + "%";
+        segment.style.transform = `rotate(${angle}deg)`;
+        routeLayer.appendChild(segment);
+      }
+      points.forEach((point, index) => {
+        const pin = document.createElement("button");
+        pin.type = "button";
+        pin.className = "pin" + (point.pending ? " pending" : "") + (index === activePoint ? " active" : "");
+        pin.style.left = point.x + "%";
+        pin.style.top = point.y + "%";
+        pin.setAttribute("aria-label", `${index + 1} ${point.label} ${point.time}`);
+        pin.innerHTML = `<span>${index + 1}</span>`;
+        pin.addEventListener("click", () => {
+          activePoint = index;
+          renderRoute();
+          updateSelectedPoint();
+          if (!sheet.classList.contains("expanded")) sheet.classList.add("expanded");
+        });
+        routeLayer.appendChild(pin);
+      });
+      renderSheet();
+    }
+
+    function renderSheet() {
+      const day = dayData();
+      document.getElementById("sheetKicker").textContent = day.kicker;
+      document.getElementById("sheetTitle").textContent = day.title;
+      document.getElementById("nextStop").textContent = day.next;
+      document.getElementById("ticketEmoji").textContent = day.ticketEmoji;
+      document.getElementById("ticketMain").textContent = day.ticketMain;
+      document.getElementById("ticketSub").textContent = day.ticketSub;
+      document.getElementById("timeline").innerHTML = day.points.map(point => `
+        <div class="timeline-item">
+          <span class="timeline-time">${escapeHtml(point.time)}</span>
+          <span class="timeline-mark"></span>
+          <div class="timeline-copy">
+            <strong>${escapeHtml(point.label)}</strong>
+            <span>${escapeHtml(point.note)}</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateSelectedPoint() {
+      const point = dayData().points[activePoint];
+      document.getElementById("nextStop").textContent = `查看 · ${point.label}`;
+      showToast(`${point.time} · ${point.note}`);
+    }
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      toast.textContent = message;
+      toast.classList.add("show");
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1900);
+    }
+
+    async function copyText(text, message) {
+      let success = false;
+      try {
+        await navigator.clipboard.writeText(text);
+        success = true;
+      } catch (error) {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "absolute";
+        area.style.left = "-9999px";
+        document.body.appendChild(area);
+        area.select();
+        success = document.execCommand("copy");
+        area.remove();
+      }
+      showToast(success ? message : "复制失败，请长按文字复制");
+    }
+
+    document.querySelectorAll(".day-tab").forEach(button => {
+      button.addEventListener("click", () => {
+        activeDay = Number(button.dataset.day);
+        activePoint = 0;
+        document.querySelectorAll(".day-tab").forEach(item => item.classList.toggle("active", item === button));
+        sheet.classList.remove("expanded");
+        renderRoute();
+      });
+    });
+
+    rainToggle.addEventListener("click", () => {
+      rainMode = !rainMode;
+      activePoint = 0;
+      rainToggle.classList.toggle("active", rainMode);
+      rainToggle.setAttribute("aria-pressed", String(rainMode));
+      renderRoute();
+    });
+
+    sheetHandle.addEventListener("click", () => sheet.classList.toggle("expanded"));
+
+    let dragStart = 0;
+    let initialHeight = 0;
+    sheetHandle.addEventListener("pointerdown", event => {
+      dragStart = event.clientY;
+      initialHeight = sheet.getBoundingClientRect().height;
+      sheetHandle.setPointerCapture(event.pointerId);
+    });
+    sheetHandle.addEventListener("pointermove", event => {
+      if (!dragStart) return;
+      const next = Math.max(230, Math.min(window.innerHeight * .74, initialHeight + dragStart - event.clientY));
+      sheet.style.height = next + "px";
+    });
+    sheetHandle.addEventListener("pointerup", event => {
+      if (!dragStart) return;
+      const expanded = sheet.getBoundingClientRect().height > window.innerHeight * .48;
+      sheet.style.height = "";
+      sheet.classList.toggle("expanded", expanded);
+      dragStart = 0;
+      sheetHandle.releasePointerCapture(event.pointerId);
+    });
+
+    document.getElementById("copyAction").addEventListener("click", () => {
+      copyText(dayData().copy, "地点已复制");
+    });
+    document.getElementById("navAction").addEventListener("click", () => {
+      const query = encodeURIComponent(dayData().navQuery);
+      window.open(`https://uri.amap.com/search?keyword=${query}&city=厦门&callnative=0`, "_blank", "noopener");
+    });
+
+    const tripView = document.getElementById("tripView");
+    const discoverView = document.getElementById("discoverView");
+    document.querySelectorAll("[data-view]").forEach(button => {
+      button.addEventListener("click", () => {
+        const isTrip = button.dataset.view === "trip";
+        tripView.classList.toggle("active", isTrip);
+        discoverView.classList.toggle("active", !isTrip);
+        document.querySelectorAll("[data-view]").forEach(item => item.classList.toggle("active", item === button));
+      });
+    });
+
+    const funSection = document.getElementById("funSection");
+    const foodSection = document.getElementById("foodSection");
+    document.querySelectorAll("[data-discover]").forEach(button => {
+      button.addEventListener("click", () => {
+        const showFood = button.dataset.discover === "food";
+        foodSection.hidden = !showFood;
+        funSection.hidden = showFood;
+        document.querySelectorAll("[data-discover]").forEach(item => item.classList.toggle("active", item === button));
+      });
+    });
+
+    function renderEntertainment(filter = "all") {
+      const list = document.getElementById("funList");
+      const items = entertainment.filter(item => filter === "all" || item.tags.includes(filter));
+      list.innerHTML = items.map((item, index) => `
+        <article class="experience-card">
+          <div class="card-icon">${escapeHtml(item.icon)}</div>
+          <div>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p class="card-meta">${escapeHtml(item.meta)}</p>
+            <p class="card-copy">${escapeHtml(item.copy)}</p>
+            <span class="card-tag">可选 · 不占主线</span>
+          </div>
+          <button class="mini-action" type="button" data-copy-fun="${escapeHtml(item.copyName)}">复制名称</button>
+        </article>
+      `).join("");
+      list.querySelectorAll("[data-copy-fun]").forEach(button => {
+        button.addEventListener("click", () => copyText(button.dataset.copyFun, "项目名称已复制"));
+      });
+    }
+
+    document.querySelectorAll("[data-fun-filter]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-fun-filter]").forEach(item => item.classList.toggle("active", item === button));
+        renderEntertainment(button.dataset.funFilter);
+      });
+    });
+
+    function renderFood(filter = "all") {
+      const list = document.getElementById("foodList");
+      const items = foods.filter(item => filter === "all" || item.tier === filter);
+      list.innerHTML = items.map(item => `
+        <article class="food-card">
+          <div class="card-icon">${escapeHtml(item.icon)}</div>
+          <div>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p class="card-meta">${escapeHtml(item.tier)} · ${escapeHtml(item.meta)}</p>
+            <p class="card-copy">${escapeHtml(item.copy)}</p>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    document.querySelectorAll("[data-food-filter]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-food-filter]").forEach(item => item.classList.toggle("active", item === button));
+        renderFood(button.dataset.foodFilter);
+      });
+    });
+
+    const posterDialog = document.getElementById("posterDialog");
+    document.getElementById("openPoster").addEventListener("click", () => posterDialog.showModal());
+    document.getElementById("closePoster").addEventListener("click", () => posterDialog.close());
+    posterDialog.addEventListener("click", event => {
+      if (event.target === posterDialog) posterDialog.close();
+    });
+
+    renderRoute();
+    renderEntertainment();
+    renderFood();
+  </script>
+</body>
+</html>
