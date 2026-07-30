@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#2f7184">
+  <meta name="robots" content="noindex,nofollow,noarchive,noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <title>厦门3天2晚完整攻略｜4人轻松慢游</title>
+  <style>
+    :root{
+      --paper:#f5efe2;--card:#fffdf8;--ink:#27312e;--muted:#68706c;
+      --blue:#34788a;--blue-soft:#deedf0;--orange:#d97549;
+      --orange-soft:#f8e4d8;--green:#64825c;--green-soft:#e3eadc;
+      --line:#ded5c5;--shadow:0 9px 28px rgba(57,49,39,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;color:var(--ink);
+      background:radial-gradient(circle at 5% 0%,rgba(255,255,255,.88),transparent 28rem),var(--paper);
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+      line-height:1.65;
+    }
+    a{color:inherit}
+    .page{width:min(100%,760px);margin:auto;padding:0 15px calc(36px + env(safe-area-inset-bottom))}
+    .hero{
+      position:relative;overflow:hidden;margin:0 -15px 18px;
+      padding:calc(25px + env(safe-area-inset-top)) 22px 27px;color:#fff;
+      background:linear-gradient(145deg,#286879,#4d919b);border-radius:0 0 29px 29px;
+    }
+    .hero:after{
+      content:"";position:absolute;right:-55px;bottom:-75px;width:220px;height:220px;
+      border:2px solid rgba(255,255,255,.2);border-radius:50%;
+      box-shadow:0 0 0 27px rgba(255,255,255,.06),0 0 0 54px rgba(255,255,255,.04)
+    }
+    .eyebrow{margin:0 0 4px;font-size:11px;font-weight:800;letter-spacing:.16em;opacity:.82}
+    h1{margin:0;font-family:"STKaiti","KaiTi","FangSong",serif;font-size:clamp(34px,10vw,55px);line-height:1.15;letter-spacing:.03em}
+    .sub{margin:9px 0 16px;font-size:14px;opacity:.92}
+    .chips,.tags{display:flex;flex-wrap:wrap;gap:7px}
+    .chip{padding:6px 10px;border:1px solid rgba(255,255,255,.27);border-radius:99px;background:rgba(255,255,255,.14);font-size:11px;font-weight:700}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 2px 12px}
+    .section-head h2{margin:0;font-size:21px;line-height:1.35}
+    .section-head span{color:var(--muted);font-size:11px;white-space:nowrap}
+    .card,.hotel,.day,.budget,.rain,.route-summary{
+      background:rgba(255,253,248,.95);border:1px solid rgba(101,88,68,.13);
+      border-radius:21px;box-shadow:var(--shadow)
+    }
+    .hotel{padding:18px;border-top:5px solid var(--blue)}
+    .hotel-title{display:flex;gap:12px;align-items:flex-start}
+    .icon{display:grid;place-items:center;flex:0 0 43px;width:43px;height:43px;border-radius:14px;background:var(--blue-soft);font-size:21px}
+    .hotel h2{margin:0 0 3px;font-size:19px;line-height:1.4}
+    .hotel-address{margin:0;color:var(--muted);font-size:12px}
+    .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:15px 0 0}
+    .fact{padding:11px;background:#f8f4eb;border:1px solid var(--line);border-radius:13px}
+    .fact b{display:block;font-size:13px}.fact span{color:var(--muted);font-size:11px}
+    .note{margin:13px 0 0;padding:11px 12px;color:#66513e;background:var(--orange-soft);border-radius:12px;font-size:12px}
+    .route-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:0;overflow:hidden}
+    .route-summary div{padding:13px 8px;text-align:center;border-right:1px dashed var(--line)}
+    .route-summary div:last-child{border:0}
+    .route-summary b{display:block;color:var(--blue);font-size:14px}.route-summary small{color:var(--muted);font-size:10px}
+    .day{overflow:hidden;margin-bottom:18px}
+    .day-head{display:flex;justify-content:space-between;gap:10px;padding:17px 18px 15px;color:#fff;background:var(--orange)}
+    .day.green .day-head{background:var(--green)}.day.blue .day-head{background:var(--blue)}
+    .day-kicker{margin:0 0 1px;font-size:10px;font-weight:900;letter-spacing:.12em;opacity:.86}
+    .day-head h3{margin:0;font-size:22px;line-height:1.3}.day-theme{align-self:center;text-align:right;font-size:11px;opacity:.92}
+    .route-line{margin:14px 16px 0;padding:10px 12px;color:#5d5145;background:#f7f1e7;border:1px dashed #cbbca8;border-radius:12px;font-size:11px}
+    .timeline{list-style:none;margin:0;padding:16px 17px 18px}
+    .timeline li{position:relative;display:grid;grid-template-columns:72px 1fr;gap:10px;padding:0 0 17px}
+    .timeline li:last-child{padding-bottom:0}
+    .timeline li:not(:last-child):after{content:"";position:absolute;left:77px;top:23px;bottom:4px;width:1px;background:var(--line)}
+    time{color:var(--orange);font-size:11px;font-weight:900}.green time{color:var(--green)}.blue time{color:var(--blue)}
+    .timeline h4{margin:-3px 0 3px;font-size:15px;line-height:1.45}
+    .timeline p{margin:0;color:var(--muted);font-size:12px}
+    .inside{margin:0 16px 16px;padding:13px;background:#f8f4eb;border-radius:14px}
+    .inside h4{margin:0 0 6px;font-size:14px}.inside p{margin:0;color:var(--muted);font-size:12px}
+    .inside ul{margin:7px 0 0;padding-left:18px;color:var(--muted);font-size:12px}
+    .food-grid,.travel-grid,.rain-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    .card{padding:15px}
+    .card h3{margin:0 0 7px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:12px}
+    .card ul{margin:7px 0 0;padding-left:18px;color:var(--muted);font-size:12px}
+    .tag{padding:5px 9px;color:#4f674a;background:var(--green-soft);border-radius:99px;font-size:10px;font-weight:700}
+    .rain{padding:16px;background:linear-gradient(145deg,#e0eef1,#f4f9f9);border-color:#c8dfe3}
+    .rain h3{margin:0 0 6px;color:#2f6573;font-size:15px}.rain p{margin:0;color:#53727a;font-size:12px}
+    .budget{overflow:hidden}
+    .budget table{width:100%;border-collapse:collapse;font-size:12px}
+    .budget th,.budget td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left}
+    .budget th:last-child,.budget td:last-child{text-align:right}
+    .budget thead{background:var(--orange-soft)}.budget tr:last-child td{border:0;font-weight:900;color:var(--orange);font-size:14px}
+    .budget-foot{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;background:#faf6ee}
+    .budget-foot div{padding:10px;text-align:center;background:#fff;border:1px solid var(--line);border-radius:12px}
+    .budget-foot b{display:block;color:var(--blue);font-size:16px}.budget-foot small{color:var(--muted);font-size:10px}
+    .checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:0;padding:0;list-style:none}
+    .checklist li{padding:11px 12px;background:var(--card);border:1px solid var(--line);border-radius:13px;font-size:12px}
+    .checklist li:before{content:"✓";margin-right:7px;color:var(--green);font-weight:900}
+    .quote{margin:26px 0 5px;padding:18px;color:#fff;background:linear-gradient(145deg,#34788a,#5a9289);border-radius:20px;text-align:center;font-family:"STKaiti","KaiTi",serif;font-size:17px;line-height:1.75}
+    footer{margin-top:27px;padding:17px 2px 6px;color:var(--muted);border-top:1px solid var(--line);font-size:10px}
+    footer a{color:var(--blue)}
+    @media(max-width:400px){
+      .facts,.food-grid,.travel-grid,.rain-grid{grid-template-columns:1fr}
+      .timeline li{grid-template-columns:66px 1fr}.timeline li:not(:last-child):after{left:71px}
+    }
+    @media print{body{background:#fff}.day,.card,.hotel,.budget,.rain{box-shadow:none;break-inside:avoid}.page{width:100%}}
+  </style>
+</head>
+<body>
+<main class="page">
+  <header class="hero">
+    <p class="eyebrow">XIAMEN · 3 DAYS 2 NIGHTS</p>
+    <h1>厦门3天2晚<br>完整攻略</h1>
+    <p class="sub">2026.07.31 周五 — 08.02 周日</p>
+    <div class="chips">
+      <span class="chip">4人同行</span><span class="chip">2位中年人＋2位年轻人</span>
+      <span class="chip">轻松慢游</span><span class="chip">不去鼓浪屿</span><span class="chip">不去厦大</span>
+    </div>
+  </header>
+
+  <section class="hotel" aria-labelledby="hotel-title">
+    <div class="hotel-title">
+      <span class="icon">🏨</span>
+      <div>
+        <h2 id="hotel-title">锦江之星酒店<br>（厦门火车站万象城店）</h2>
+        <p class="hotel-address">厦门市思明区凤屿路16号｜近厦门站、梧村商圈与万象城</p>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>2间有窗大床房</b><span>7月31日入住，8月2日退房</span></div>
+      <div class="fact"><b>总房费 ≤ ¥800</b><span>含税后每间每晚不超过 ¥200</span></div>
+      <div class="fact"><b>优先免费取消</b><span>入住当天18:00前可取消更好</span></div>
+      <div class="fact"><b>入住 / 退房</b><span>通常14:00后入住、12:00前退房</span></div>
+    </div>
+    <p class="note">下单前确认：4位成人可入住、独立卫浴、有外窗、最终含税总价。若单间超过 ¥220，改看汉庭厦门火车站店或万象城店，筛选评分4.5以上。</p>
+  </section>
+
+  <section aria-labelledby="overview">
+    <div class="section-head"><h2 id="overview">路线一眼看懂</h2><span>少折返 · 固定午休</span></div>
+    <div class="route-summary">
+      <div><b>周五</b><small>抵达 · 沙坡尾</small></div>
+      <div><b>周六</b><small>植物园 · 集美</small></div>
+      <div><b>周日</b><small>八市 · 老城返程</small></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="train">
+    <div class="section-head"><h2 id="train">高铁与到店</h2><span>以12306为准</span></div>
+    <div class="travel-grid">
+      <article class="card">
+        <h3>🚄 周五去程</h3>
+        <p>筛选“普宁 → 厦门站 / 厦门北站”，建议08:30—10:00出发，最迟12:00前抵达。优先厦门站，单程通常约1.5—2小时。</p>
+      </article>
+      <article class="card">
+        <h3>🧳 抵达酒店</h3>
+        <p>到厦门站后直接打车，避免4人正午拖箱步行。到厦门北站可直接打车，或地铁1号线进岛后换3号线。</p>
+      </article>
+      <article class="card">
+        <h3>🏁 周日返程</h3>
+        <p>厦门站选15:00—17:30；厦门北站选15:30—18:00。时间、票价接近时优先厦门站。</p>
+      </article>
+      <article class="card">
+        <h3>🚕 4人交通策略</h3>
+        <p>带行李和市区短途优先打车；去集美优先地铁，体验1号线跨海段，也能控制交通预算。</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-label="三日详细行程">
+    <div class="section-head"><h2>三日详细日程</h2><span>正午回酒店休息</span></div>
+
+    <article class="day">
+      <header class="day-head">
+        <div><p class="day-kicker">DAY 1 · 07/31</p><h3>周五｜抵达＋沙坡尾看海</h3></div>
+        <div class="day-theme">老港口<br>海边落日</div>
+      </header>
+      <p class="route-line">酒店 → 沙坡尾避风坞 → 大学路 → 艺术西区 → 演武大桥观景平台</p>
+      <ol class="timeline">
+        <li><time>08:30—10:00</time><div><h4>普宁站出发</h4><p>按已购车次执行；优先厦门站，抵达后不要先拖箱逛景点。</p></div></li>
+        <li><time>10:30—12:00</time><div><h4>抵达厦门，前往酒店</h4><p>厦门站直接打车到凤屿路16号；先寄存行李或办理入住。</p></div></li>
+        <li><time>12:00—13:20</time><div><h4>酒店附近午餐</h4><p>选沙茶面、扁食拌面、虾面、五香卷或面线糊，不排长队。</p></div></li>
+        <li><time>13:30—15:20</time><div><h4>办理入住、固定午休</h4><p>把最热时段留在室内，让两位中年人恢复体力。</p></div></li>
+        <li><time>15:40—17:40</time><div><h4>沙坡尾避风坞与艺术西区</h4><p>看老港口、街巷和文艺空间，路线平缓，沿途容易找到休息与餐饮。</p></div></li>
+        <li><time>17:40—18:40</time><div><h4>演武大桥观景平台附近看海</h4><p>四个人状态都好，再打车去白城沙滩停留约30分钟；累了就直接吃饭。</p></div></li>
+        <li><time>19:00—20:30</time><div><h4>沙坡尾或中山路晚餐</h4><p>4人可点姜母鸭、海蛎煎、酱油水鱼或炒花蛤、时蔬和汤。</p></div></li>
+        <li><time>20:30以后</time><div><h4>回酒店或万象城散步</h4><p>第一晚不再加夜间景点，早点休息。</p></div></li>
+      </ol>
+      <div class="inside">
+        <h4>海鲜点餐提醒</h4>
+        <p>下单前问清按份、按斤还是按只，并确认重量与加工费；菜单不清楚就换一家。</p>
+      </div>
+    </article>
+
+    <article class="day green">
+      <header class="day-head">
+        <div><p class="day-kicker">DAY 2 · 08/01</p><h3>周六｜植物园＋集美学村</h3></div>
+        <div class="day-theme">全天游玩<br>中间午休</div>
+      </header>
+      <p class="route-line">植物园西门 → 南洋杉草坪 → 雨林世界 → 多肉区 → 午休 → 龙舟池 → 嘉庚建筑 → 十里长堤</p>
+      <ol class="timeline">
+        <li><time>06:50—07:40</time><div><h4>起床、早餐、打车</h4><p>07:40从酒店打车去植物园西门，每人带一瓶水。</p></div></li>
+        <li><time>08:00</time><div><h4>西门入园，看万石湖与南洋杉草坪</h4><p>官方建议从虎园路西门进入，距离核心片区更近。</p></div></li>
+        <li><time>08:40左右</time><div><h4>雨林世界赶雾森</h4><p>夏季雾森通常为08:30—11:00、15:00—17:00，现场安排以园方为准。</p></div></li>
+        <li><time>09:40左右</time><div><h4>观光车前往多肉植物区</h4><p>不全程徒步爬坡；多肉区室外很晒，停留30—40分钟即可。</p></div></li>
+        <li><time>10:40—11:00</time><div><h4>观光车返回西门，离园</h4><p>不为了拍全景走偏僻山路，保存下午体力。</p></div></li>
+        <li><time>11:20—12:30</time><div><h4>百家村或酒店附近午餐</h4><p>吃扁食拌面、鸭肉粥、沙茶面、炖汤或简单闽南家常菜。</p></div></li>
+        <li><time>13:00—15:10</time><div><h4>回酒店午休</h4><p>这是固定安排，不建议跳过。午后湿热，休息后再去集美。</p></div></li>
+        <li><time>15:20</time><div><h4>地铁前往集美学村</h4><p>从厦门火车站附近出发，换乘1号线，跨海段可看海景。</p></div></li>
+        <li><time>16:20—18:00</time><div><h4>龙舟池与嘉庚建筑外观</h4><p>只走龙舟池、南薰楼周边和嘉庚建筑外观，不钻进每一所学校。</p></div></li>
+        <li><time>18:00—19:20</time><div><h4>十里长堤坐着看海</h4><p>拍照、吹风、看跨海地铁，不安排骑行或长距离暴走。</p></div></li>
+        <li><time>19:30—21:00</time><div><h4>集美晚餐，返回酒店</h4><p>石鼓路找菜单标价清楚、环境干净的闽南小馆，不硬排网红店。</p></div></li>
+      </ol>
+      <div class="inside">
+        <h4>植物园装备</h4>
+        <ul><li>水、帽子、防晒霜、驱蚊液</li><li>防滑运动鞋，不穿新鞋</li><li>提前购票，观光车可入园后购买</li></ul>
+      </div>
+    </article>
+
+    <article class="day blue">
+      <header class="day-head">
+        <div><p class="day-kicker">DAY 3 · 08/02</p><h3>周日｜八市老城＋返程</h3></div>
+        <div class="day-theme">烟火气<br>不跑远</div>
+      </header>
+      <p class="route-line">酒店打车 → 八市 → 大元路 → 大同路 → 中山路 → 酒店取行李 → 车站</p>
+      <ol class="timeline">
+        <li><time>07:50—08:20</time><div><h4>起床、整理行李、退房</h4><p>可把大件行李寄存在酒店，贵重物品随身带。</p></div></li>
+        <li><time>08:40—09:50</time><div><h4>八市早餐、逛市场</h4><p>4人分开买，组合尝花生汤油条、面线糊、扁食、沙茶面、五香卷。</p></div></li>
+        <li><time>09:50—10:50</time><div><h4>大元路、大同路</h4><p>看老街日常和骑楼，不追求把所有小店逛完。</p></div></li>
+        <li><time>10:50—11:40</time><div><h4>中山路骑楼</h4><p>顺路买馅饼、肉脯、茶叶、鱼皮花生或独立包装糕点。</p></div></li>
+        <li><time>11:40—12:30</time><div><h4>午餐</h4><p>返程前吃清淡、容易消化的餐食，不买需要冷藏的鲜活海鲜。</p></div></li>
+        <li><time>12:30—13:10</time><div><h4>回酒店取行李</h4><p>再次核对车站、检票时间和4人的证件。</p></div></li>
+        <li><time>13:20以后</time><div><h4>前往厦门站或厦门北站</h4><p>厦门站离酒店近；如果从北站返程，要额外预留进站路程。</p></div></li>
+        <li><time>15:00—18:00</time><div><h4>高铁返回普宁</h4><p>按已购车次执行，行程结束。</p></div></li>
+      </ol>
+    </article>
+  </section>
+
+  <section aria-labelledby="food">
+    <div class="section-head"><h2 id="food">三天吃什么</h2><span>本地味 · 不盲追网红</span></div>
+    <div class="food-grid">
+      <article class="card"><h3>🍜 小吃早餐</h3><p>沙茶面、扁食拌面、虾面、面线糊、花生汤＋油条、五香卷。</p></article>
+      <article class="card"><h3>🦆 4人正餐</h3><p>姜母鸭、鸭肉粥、海蛎煎、酱油水鱼、炒花蛤、闽南家常菜。</p></article>
+      <article class="card"><h3>🥣 高温天午餐</h3><p>炖汤、扁食、拌面或清淡家常菜，别在正午吃得太油腻。</p></article>
+      <article class="card"><h3>🎁 伴手礼</h3><p>馅饼、肉脯、茶叶、鱼皮花生、独立包装传统糕点。</p></article>
+    </div>
+    <div class="tags" style="margin-top:11px"><span class="tag">明码标价</span><span class="tag">本地客人较多</span><span class="tag">排队不过长</span><span class="tag">海鲜先问价</span></div>
+  </section>
+
+  <section aria-labelledby="rain">
+    <div class="section-head"><h2 id="rain">分日雨天替代</h2><span>不冒雨硬走海边</span></div>
+    <div class="rain-grid">
+      <article class="rain"><h3>周五下午下雨</h3><p>万象城休息 → 中山路骑楼 → 大同路晚餐。雨小后再短暂去沙坡尾。</p></article>
+      <article class="rain"><h3>周六上午中到大雨</h3><p>厦门市博物馆或科技馆 → 万象城午餐 → 酒店午休 → 看天气决定是否去集美。</p></article>
+      <article class="rain"><h3>周六傍晚下雨</h3><p>取消十里长堤，只看集美建筑与石鼓路；雨势大则回岛内吃饭。</p></article>
+      <article class="rain"><h3>周日下雨</h3><p>缩短八市停留 → 中山路骑楼 → 商场休息 → 提前取行李去车站。</p></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="budget">
+    <div class="section-head"><h2 id="budget">4人预算明细</h2><span>不含个人购物</span></div>
+    <div class="budget">
+      <table>
+        <thead><tr><th>项目</th><th>4人预算</th></tr></thead>
+        <tbody>
+          <tr><td>往返动车</td><td>¥850—1,000</td></tr>
+          <tr><td>酒店2间房、2晚</td><td>≤ ¥800</td></tr>
+          <tr><td>三天正餐与小吃</td><td>¥1,000—1,400</td></tr>
+          <tr><td>市内打车、地铁</td><td>¥300—450</td></tr>
+          <tr><td>植物园门票、观光车</td><td>约 ¥160</td></tr>
+          <tr><td>饮料与零食</td><td>¥200—400</td></tr>
+          <tr><td>预计总计</td><td>¥3,310—4,210</td></tr>
+        </tbody>
+      </table>
+      <div class="budget-foot">
+        <div><b>¥830—1,050</b><small>预计人均</small></div>
+        <div><b>≤ ¥800</b><small>两晚总房费目标</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="check">
+    <div class="section-head"><h2 id="check">今晚完成</h2><span>四个人一起核对</span></div>
+    <ul class="checklist">
+      <li>去程与返程车票</li><li>2间有窗大床房</li>
+      <li>含税总房费≤800元</li><li>确认4位成人可入住</li>
+      <li>植物园门票</li><li>4人身份证</li>
+      <li>雨伞与防晒用品</li><li>驱蚊液与充电宝</li>
+      <li>防滑运动鞋</li><li>不穿新鞋出行</li>
+    </ul>
+  </section>
+
+  <p class="quote">周五沙坡尾看海<br>周六植物园＋集美学村＋十里长堤<br>周日八市老城返程</p>
+
+  <footer>
+    <p>攻略整理日期：2026-07-30。酒店房价、车次余票、天气、场馆开放与雾森时段可能变化，请以出发当天官方页面为准。</p>
+    <p>出发前核对：
+      <a href="https://www.12306.cn/" rel="noreferrer">中国铁路12306</a> ·
+      <a href="https://www.xiamenbg.cn/Home/yyzn2" rel="noreferrer">厦门园林植物园</a> ·
+      <a href="https://www.xmmuseum.com/" rel="noreferrer">厦门市博物馆</a>
+    </p>
+    <p>隐私提醒：本页包含具体日期、住宿地点与行程；如发布为公开链接，任何获得或被转发链接的人都可能访问。</p>
+  </footer>
+</main>
+</body>
+</html>
